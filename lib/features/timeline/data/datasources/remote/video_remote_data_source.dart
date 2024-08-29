@@ -2,7 +2,6 @@
 
 import 'package:injectable/injectable.dart';
 import 'package:ulearna_app/core/core.dart';
-import 'package:ulearna_app/core/network/http/modules/ulearna_video_http_module.dart';
 import 'package:ulearna_app/features/timeline/data/data.dart';
 import 'package:ulearna_app/shared/shared.dart';
 
