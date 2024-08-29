@@ -9,5 +9,11 @@ class AppRouter extends RootStackRouter {
   RouteType get defaultRouteType => const RouteType.adaptive();
 
   @override
-  List<AutoRoute> get routes => [];
+  List<AutoRoute> get routes => [
+        AutoRoute(
+          page: HomeRoute.page,
+          path: '/',
+          initial: true,
+        ),
+      ];
 }
