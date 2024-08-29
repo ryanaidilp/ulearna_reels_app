@@ -1,0 +1,55 @@
+targets:
+  $default:
+    builders:
+      envied_generator|envied:
+        generate_for:
+          - lib/config/env/**.dart
+      auto_route_generator:auto_route_generator:
+        generate_for:
+          include:
+            - lib/features/**/presentation/pages/**.dart
+      auto_route_generator:auto_router_generator:
+        generate_for:
+          include:
+            - lib/router/**.dart
+      json_serializable:
+        options:
+          field_rename: snake
+      freezed:freezed:
+        generate_for:
+          include:
+            - lib/features/**/presentation/blocs/**/**.dart
+            - lib/features/**/presentation/cubits/**/**.dart
+            - lib/features/**/data/models/**.dart
+            - lib/shared/data/models/**.dart
+      injectable_generator|injectable_config_builder:
+        enabled: true
+        generate_for:
+          include:
+            - lib/core/di/**.dart
+            - lib/features/**/data/datasources/**.dart
+            - lib/features/**/data/repositories/**.dart
+      slang_build_runner:
+        options:
+          base_locale: en
+          fallback_strategy: base_locale
+          input_directory: lib/i10n/json
+          input_file_pattern: .i18n.json
+          output_directory: lib/i10n/translations
+          output_file_name: translations.g.dart
+          output_format: single_file
+          locale_handling: true
+          flutter_integration: true
+          namespaces: true
+          translate_var: l10n
+          enum_name: AppLocale
+          class_name: Translations
+          translation_class_visibility: private
+          key_case: camel
+          key_map_case: camel
+          param_case: camel
+          string_interpolation: dart
+          flat_map: false
+          translation_overrides: false
+          timestamp: true
+          statistics: true
