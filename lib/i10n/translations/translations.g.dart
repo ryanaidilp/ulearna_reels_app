@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 4 (2 per locale)
+/// Strings: 8 (4 per locale)
 ///
-/// Built on 2024-08-28 at 16:51 UTC
+/// Built on 2024-08-29 at 11:13 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -163,6 +163,8 @@ class _TranslationsGeneralEn {
 
 	// Translations
 	String get appName => 'Ulearna Demo App';
+	String get follow => 'Follow';
+	String get following => 'Following';
 }
 
 // Path: <root>
@@ -207,4 +209,6 @@ class _TranslationsGeneralId extends _TranslationsGeneralEn {
 
 	// Translations
 	@override String get appName => 'Ulearna Demo App';
+	@override String get follow => 'Ikuti';
+	@override String get following => 'Mengikuti';
 }
