@@ -58,7 +58,7 @@ This repository includes launch configurations for both VSCode and Android Studi
 ## Important Notes
 
 - Before running `build_runner`, comment out line 7 in `lib/shared/data/models/api_response_model.dart`.
-- After generating the files, revert line 7 and update the generated files `api_response_model.g.dart` and `api_response_model.freezed.dart`.
+- After generating the files, revert line 7 and the generated files `api_response_model.g.dart` and `api_response_model.freezed.dart`.
 
 ## Features
 
