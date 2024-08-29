@@ -8,6 +8,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:flutter_cache_manager/flutter_cache_manager.dart' as _i447;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:http/http.dart' as _i519;
 import 'package:injectable/injectable.dart' as _i526;
@@ -41,6 +42,14 @@ _i174.GetIt $initGetIt(
   gh.lazySingleton<_i555.VideoRemoteDataSource>(
       () => _i555.VideoRemoteDataSourceImpl());
   gh.lazySingleton<_i54.VideoRepository>(() => _i410.VideoRepositoryImpl());
+  gh.factory<_i447.CacheManager>(
+    () => registerModule.thumbnailCacheManager,
+    instanceName: 'thumbnail-cache-manager',
+  );
+  gh.factory<_i447.CacheManager>(
+    () => registerModule.videoCacheManager,
+    instanceName: 'video-cache-manager',
+  );
   gh.lazySingleton<_i450.UlearnaVideoHttpModule>(
       () => _i450.UlearnaVideoHttpModule(
             gh<_i519.Client>(),
