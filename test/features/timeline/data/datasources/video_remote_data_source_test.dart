@@ -73,8 +73,8 @@ void main() {
             () async {
               when(
                 () => mockHttpModule.get(
-                  path: path,
-                  queryParams: queryParams,
+                  path: any(named: 'path'),
+                  queryParams: any(named: 'queryParams'),
                 ),
               ).thenAnswer(
                 (_) async => jsonResponse,
