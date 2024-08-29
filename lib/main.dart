@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ulearna_app/app.dart';
 import 'package:ulearna_app/core/di/di.dart';
+import 'package:ulearna_app/features/timeline/timeline.dart';
 import 'package:ulearna_app/i10n/translations/translations.g.dart';
 import 'package:ulearna_app/router/app_router.dart';
 
@@ -21,7 +23,16 @@ FutureOr<void> main() async => runZonedGuarded(
         LocaleSettings.useDeviceLocale();
 
         runApp(
-          App(router: router),
+          MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => VideoCubit(),
+              ),
+            ],
+            child: App(
+              router: router,
+            ),
+          ),
         );
       },
       (error, stack) {
