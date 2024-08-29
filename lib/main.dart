@@ -28,9 +28,12 @@ FutureOr<void> main() async => runZonedGuarded(
               BlocProvider(
                 create: (context) => VideoCubit(),
               ),
+              
             ],
-            child: App(
-              router: router,
+            child: TranslationProvider(
+              child: App(
+                router: router,
+              ),
             ),
           ),
         );

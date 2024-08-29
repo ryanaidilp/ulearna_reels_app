@@ -95,24 +95,24 @@ class _HomePageState extends State<HomePage>
               },
               scrollDirection: Axis.vertical,
               builderDelegate: PagedChildBuilderDelegate<VideoData>(
-                itemBuilder: (context, item, index) => GestureDetector(
-                  onLongPress: () {
-                    _toggleVideoInfo(status: false);
-                  },
-                  onLongPressEnd: (details) {
-                    _toggleVideoInfo();
-                  },
-                  child: SizedBox(
-                    width: 1.sw,
-                    height: 1.sh,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Image.network(
-                          item.thumbCdnUrl,
-                          fit: BoxFit.cover,
-                        ),
-                        ValueListenableBuilder(
+                itemBuilder: (context, item, index) => SizedBox(
+                  width: 1.sw,
+                  height: 1.sh,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      VideoDataPlayer(
+                        onLongPress: () {
+                          _toggleVideoInfo(status: false);
+                        },
+                        onLongPressRelease: (details) {
+                          _toggleVideoInfo();
+                        },
+                        reelUrl: item.cdnUrl,
+                        thumbnailUrl: item.thumbCdnUrl,
+                      ),
+                      IgnorePointer(
+                        child: ValueListenableBuilder(
                           valueListenable: _textCollapseNotifier,
                           builder: (_, value, __) => AnimatedContainer(
                             duration: 300.milliseconds,
@@ -121,23 +121,23 @@ class _HomePageState extends State<HomePage>
                             color: value ? Colors.transparent : Colors.black87,
                           ),
                         ),
-                        Positioned(
-                          left: 16,
-                          right: 16,
-                          bottom: 16,
-                          child: AnimatedBuilder(
-                            animation: _fadeAnimationCtl,
-                            builder: (context, child) => FadeTransition(
-                              opacity: _fadeAnimationCtl,
-                              child: VideoInfo(
-                                item: item,
-                                isCollapsed: _textCollapseNotifier,
-                              ),
+                      ),
+                      Positioned(
+                        left: 16,
+                        right: 16,
+                        bottom: 16,
+                        child: AnimatedBuilder(
+                          animation: _fadeAnimationCtl,
+                          builder: (context, child) => FadeTransition(
+                            opacity: _fadeAnimationCtl,
+                            child: VideoInfo(
+                              item: item,
+                              isCollapsed: _textCollapseNotifier,
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
